@@ -28,12 +28,12 @@ export class LoginComponent implements OnInit {
     console.log(this.password);
     this.authService.login(this.username, this.password)
       .then((res) => {
-        this.flashMessagesService.show('You are logged in', { cssClass: 'alert-success', timeout: 4000 });
+        this.flashMessagesService.show('You are logged in', { cssClass: 'alert-success', timeout: 2000 });
         // Redirect to dashboard
         this.router.navigate(['/']);
       })
       .catch((err) => {
-        this.flashMessagesService.show(err, { cssClass: 'alert-danger', timeout: 4000 });
+        this.flashMessagesService.show(err, { cssClass: 'alert-danger', timeout: 2000 });
         // navigate back to login page
         this.router.navigate(['/login']);
       });

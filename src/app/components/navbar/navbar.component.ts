@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { Router, NavigationEnd } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -7,12 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  isLoggedIn: boolean;
+  //isLoggedIn: boolean;
+  isLoggedIn$: Observable<boolean>;
+  navigationSubscription;
 
-  constructor() { }
+  constructor(private router: Router, private authService: AuthService,) {
+    this.navigationSubscription = this.router.events.subscribe ((e: any) => {
+      if (e instanceof NavigationEnd) {
+        this. ngOnInit();
+      }
+    })
+   }
 
   ngOnInit() {
-    
+
+    this.isLoggedIn$ = this.authService.authenticated;
+
+  }
+
+  signOut() {
+    this.authService.logOut();
   }
 
 }
