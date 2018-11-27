@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { DataTablesModule } from 'angular-datatables';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { AuditTrailComponent } from './components/audit-trail/audit-trail.compon
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    DataTablesModule,
     FlashMessagesModule.forRoot()
   ],
   providers: [],
