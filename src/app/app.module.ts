@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { DataTablesModule } from 'angular-datatables';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +29,7 @@ import { AuditTrailComponent } from './components/audit-trail/audit-trail.compon
     AppRoutingModule,
     FormsModule,
     DataTablesModule,
+    HttpClientModule,
     FlashMessagesModule.forRoot()
   ],
   providers: [],

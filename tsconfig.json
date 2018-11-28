@@ -20,7 +20,10 @@
     "paths": {
       "@angular/*": [
         "../node_modules/@angular/*"
-      ]
+      ],
+      "@app/*": ["app/*"],
+      "@src/*": ["src/*"],
+      "@components/*": ["components/*"]
     }
   }
 }

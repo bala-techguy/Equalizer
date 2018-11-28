@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SubscriberService } from '../../services/subscriber.service';
 
 @Component({
   selector: 'app-subscribers',
@@ -7,9 +8,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubscribersComponent implements OnInit {
 
-  constructor() { }
+  subscribers: any[];
+  dtOptions: any = {};
 
-  ngOnInit() {
+  constructor(public subscriberService: SubscriberService) { }
+
+  ngOnInit(): void {
+
+    console.log(this.subscriberService.getSubscribers());
+    this.subscribers = this.subscriberService.getSubscribers();
+    // this.subscriberService.getSubscribers().subscribe(
+    //   subscribers => {
+    //     this.subscribers = subscribers;
+    //     console.log(this.subscribers);        
+
+    //   });
+
+    this.dtOptions = {
+      // Declare the use of the extension in the dom parameter
+      dom: 'Bfrtip',
+      // Configure the buttons
+      buttons: [
+        'copy',
+        'print',
+        'excel'
+      ]
+    };
   }
 
 }

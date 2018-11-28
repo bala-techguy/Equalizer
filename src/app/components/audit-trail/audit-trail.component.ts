@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuditTrailComponent implements OnInit {
 
+  dtOptions: any = {};
+
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.dtOptions = {
+      // Declare the use of the extension in the dom parameter
+      dom: 'Bfrtip',
+      // Configure the buttons
+      buttons: [
+        'copy',
+        'print',
+        'excel'
+      ]
+    };
   }
-
 }
