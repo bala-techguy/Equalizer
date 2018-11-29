@@ -17,7 +17,7 @@
 
         <div class="box">
           <div class="box-header">
-              <button routerLink="/" type="button" class="btn bg-purple btn-flat margin">Add</button>
+              <button routerLink="/subscribers/add" type="button" class="btn btn-primary btn-flat margin">Add</button>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
@@ -28,7 +28,7 @@
                 <th>Name</th>
                 <th>City</th>
                 <th>Pin</th>
-                <th>Phone</th>
+                <th>Mobile</th>
                 <th>Due Date</th>
                 <th>Actions</th>
               </tr>
@@ -39,11 +39,14 @@
                       <td>{{sub.CustomerName }}</td>
                       <td>{{sub.City }}</td>
                       <td>{{sub.Pin }}</td>
-                      <td>{{sub.Phone }}</td>
+                      <td>{{sub.Mobile }}</td>
                       <td>{{sub.DueDate }}</td>
                       <td>
-                        <button routerLink="['/subscribers/'+sub.SubscriptionNo]" type="button" class="btn btn-info btn-flat">View</button>
-                        <button routerLink="['/subscribers/'+sub.SubscriptionNo]" type="button" class="btn btn-danger btn-flat">Delete</button>
+                        <div class="btn-group">
+                          <button [routerLink]="['/subscribers/view/'+sub.SubscriptionNo]" href="" type="button" class="btn btn-info btn-flat">View</button>
+                          <button [routerLink]="['/subscribers/modify/'+sub.SubscriptionNo]" type="button" class="btn btn-warning btn-flat">Modify</button>
+                          <button [routerLink]="['/subscribers/delete/'+sub.SubscriptionNo]" type="button" class="btn btn-danger btn-flat">Delete</button>
+                        </div>
                       </td>
                   </tr>
               </tbody>
@@ -53,7 +56,7 @@
                   <th>Name</th>
                   <th>City</th>
                   <th>Pin</th>
-                  <th>Phone</th>
+                  <th>Mobile</th>
                   <th>Due Date</th>
                   <th>Actions</th>
               </tr>

@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SubscribersComponent } from './components/subscribers/subscribers.component';
 import { ComplaintsComponent } from './components/complaints/complaints.component';
 import { AuditTrailComponent } from './components/audit-trail/audit-trail.component';
+import { CrudSubscribersComponent } from './components/crud-subscribers/crud-subscribers.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -12,9 +13,13 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: '', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'subscribers', component: SubscribersComponent, canActivate: [AuthGuard]},
+  {path: 'subscribers/add', component: CrudSubscribersComponent, canActivate: [AuthGuard]},
+  {path: 'subscribers/view/:id', component: CrudSubscribersComponent, canActivate: [AuthGuard]},
+  {path: 'subscribers/modify/:id', component: CrudSubscribersComponent, canActivate: [AuthGuard]},
+  {path: 'subscribers/delete/:id', component: CrudSubscribersComponent, canActivate: [AuthGuard]},
   {path: 'complaints', component: ComplaintsComponent, canActivate: [AuthGuard]},
   {path: 'audit-trail', component: AuditTrailComponent, canActivate: [AuthGuard]},
-  { path: '**', redirectTo: ''}
+  //{ path: '**', redirectTo: ''}
 ];
 
 @NgModule({

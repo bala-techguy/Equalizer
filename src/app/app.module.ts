@@ -13,6 +13,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SubscribersComponent } from './components/subscribers/subscribers.component';
 import { ComplaintsComponent } from './components/complaints/complaints.component';
 import { AuditTrailComponent } from './components/audit-trail/audit-trail.component';
+import { CrudSubscribersComponent } from './components/crud-subscribers/crud-subscribers.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AuditTrailComponent } from './components/audit-trail/audit-trail.compon
     DashboardComponent,
     SubscribersComponent,
     ComplaintsComponent,
-    AuditTrailComponent
+    AuditTrailComponent,
+    CrudSubscribersComponent
   ],
   imports: [
     BrowserModule,

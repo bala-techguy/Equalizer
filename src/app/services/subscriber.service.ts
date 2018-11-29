@@ -17,22 +17,22 @@ export class SubscriberService {
       {
         "SubscriptionNo": "860",
         "CustomerName": "Superman",
-        "Phone": "45987432"
+        "Mobile": "45987432"
       },
       {
         "SubscriptionNo": "870",
         "CustomerName": "Foo",
-        "Phone": "75456842"
+        "Mobile": "75456842"
       },
       {
         "SubscriptionNo": "590",
         "CustomerName": "Toto",
-        "Phone": "35487523"
+        "Mobile": "35487523"
       },
       {
         "SubscriptionNo": "550",
         "CustomerName": "Frodo",
-        "Phone": "45786984"
+        "Mobile": "45786984"
       }
     ];
 
