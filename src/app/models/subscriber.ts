@@ -14,6 +14,7 @@ export interface Subscriber {
     State?: string;
     Country?: string;
     Pin?: string;
+    Email?: string;
     Mobile?: string;
     Phone?: string;
     ModifiedDate?: any;

@@ -1,12 +1,12 @@
 <section class="content-header">
   <h1>
-    Add Subscriber
-    <small>Use this form to add a subscriber</small>
+    {{action}} Subscriber
+    <small>Use this form to {{action}} a subscriber</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="#" routerLink="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
     <li><a href="#" routerLink="/subscribers">Subscribers</a></li>
-    <li class="active">Add</li>
+    <li class="active">{{action}}</li>
   </ol>
 </section>
 
@@ -20,44 +20,50 @@
 
       <!-- /.box-header -->
       <!-- form start -->
-      <form role="form">
+      <form [formGroup]="this.subscriberService.subscribersForm" (ngSubmit)="onSubmit()">
+        <input type="hidden" formControlName="InternalId">
         <div class="box-body">
           <div class="col-md-6">
-            <div class="form-group">
-              <label for="subscriptionNo">Subscription Number</label>
-              <input type="number" class="form-control" id="subscriptionNo" placeholder="Subscription Number">
-            </div>
-            <div class="form-group">
-              <label for="customerName">Customer Name</label>
-              <input type="text" class="form-control" id="customerName" placeholder="Customer Name">
-            </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="typeId">Subscription Type</label>
-                  <input type="number" class="form-control" id="typeId" placeholder="Subscription Type">
+                  <label for="subscriptionNo">Subscription Number</label>
+                  <input type="number" class="form-control" formControlName="SubscriptionNo" id="subscriptionNo"
+                    placeholder="Subscription Number">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="checkbox">
                   <br>
                   <label>
-                    <input type="checkbox"> Is Invalid?
+                    <input type="checkbox" formControlName="IsInvalid"> Is Invalid?
                   </label>
                 </div>
               </div>
+            </div>
+            <div class="form-group" [ngClass]="{'has-error':submitted && formControls.CustomerName.errors}">
+              <label for="customerName">Customer Name</label>
+              <input type="text" class="form-control" formControlName="CustomerName" id="customerName" placeholder="Customer Name"
+                [ngClass]="{'is-invalid':submitted && formControls.CustomerName.errors}">
+              <div class="invalid-feedback" *ngIf="submitted && formControls.CustomerName.errors">
+                <span class="help-block">This field is required.</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" formControlName="Email" id="email" placeholder="Email">
             </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="mobile">Mobile</label>
-                  <input type="number" class="form-control" id="mobile" placeholder="Mobile">
+                  <input type="number" class="form-control" formControlName="Mobile" id="mobile" placeholder="Mobile">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="phone">Phone</label>
-                  <input type="number" class="form-control" id="phone" placeholder="Phone">
+                  <input type="number" class="form-control" formControlName="Phone" id="phone" placeholder="Phone">
                 </div>
               </div>
             </div>
@@ -65,13 +71,32 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="dateCreated">Date Created</label>
-                  <input type="date" class="form-control" id="dateCreated" placeholder="Date Created">
+                  <input type="date" class="form-control" formControlName="CreatedDate" id="dateCreated" placeholder="Date Created">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="dateModified">Date Modified</label>
-                  <input type="date" class="form-control" id="dateModified" placeholder="Date Modified">
+                  <label for="dateCreated">Date Created</label>
+                  <input type="date" class="form-control" formControlName="ModifiedDate" id="dateModified" placeholder="Date Modified">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="createdBy">Created By</label>
+              <input type="text" class="form-control" formControlName="CreatedByUserName" id="createdBy" placeholder="Created By">
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="typeId">Subscription Type</label>
+                  <input type="number" class="form-control" formControlName="TypeId" id="typeId" placeholder="Subscription Type">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="loyaltyUserId">Loyalty User</label>
+                  <input type="text" class="form-control" formControlName="LoyaltyUserId" id="loyaltyUserId"
+                    placeholder="Loyalty User">
                 </div>
               </div>
             </div>
@@ -79,27 +104,13 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="dueDate">Due Date</label>
-                  <input type="date" class="form-control" id="dueDate" placeholder="Due Date">
+                  <input type="date" class="form-control" formControlName="ModifiedDate" id="dueDate" placeholder="Due Date">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="renewedDate">Renewed Date</label>
-                  <input type="date" class="form-control" id="renewedDate" placeholder="Renewed Date">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="loyaltyUserId">Loyalty User</label>
-                  <input type="text" class="form-control" id="loyaltyUserId" placeholder="Loyalty User">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="createdBy">Created By</label>
-                  <input type="text" class="form-control" id="createdBy" placeholder="Created By">
+                  <input type="date" class="form-control" formControlName="RenewedDate" id="renewedDate" placeholder="Renewed Date">
                 </div>
               </div>
             </div>
@@ -107,27 +118,27 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="address1">Address Line 1</label>
-              <input type="text" class="form-control" id="address1" placeholder="Address Line 1">
+              <input type="text" class="form-control" formControlName="Address1" id="address1" placeholder="Address Line 1">
             </div>
             <div class="form-group">
               <label for="address2">Address Line 2</label>
-              <input type="text" class="form-control" id="address2" placeholder="Address Line 2">
+              <input type="text" class="form-control" formControlName="Address2" id="address2" placeholder="Address Line 2">
             </div>
             <div class="form-group">
               <label for="address3">Address Line 3</label>
-              <input type="text" class="form-control" id="address3" placeholder="Address Line 3">
+              <input type="text" class="form-control" formControlName="Address3" id="address3" placeholder="Address Line 3">
             </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="city">City</label>
-                  <input type="text" class="form-control" id="city" placeholder="City">
+                  <input type="text" class="form-control" formControlName="City" id="city" placeholder="City">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="state">State</label>
-                  <input type="text" class="form-control" id="state" placeholder="State">
+                  <input type="text" class="form-control" formControlName="State" id="state" placeholder="State">
                 </div>
               </div>
             </div>
@@ -135,27 +146,27 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="country">Country</label>
-                  <input type="text" class="form-control" id="country" placeholder="Country">
+                  <input type="text" class="form-control" formControlName="Country" id="country" placeholder="Country">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="pin">Pin Code</label>
-                  <input type="number" class="form-control" id="pin" placeholder="Pin Code">
+                  <input type="number" class="form-control" formControlName="Pin" id="pin" placeholder="Pin Code">
                 </div>
               </div>
             </div>
             <div class="form-group">
               <label for="comments">Comments</label>
-              <textarea class="form-control" rows="3" id="comments" placeholder="Comments"></textarea>
+              <textarea class="form-control" rows="3" id="comments" formControlName="Comments" placeholder="Comments"></textarea>
             </div>
           </div>
         </div>
         <!-- /.box-body -->
 
         <div class="box-footer">
-          <button type="submit" class="btn btn-primary">Submit</button>
-          <button type="submit" class="btn btn-danger pull-right">Delete</button>
+          <button type="submit" class="btn btn-primary" *ngIf="action === 'Add' || action === 'Modify'">Submit</button>
+          <button type="submit" class="btn btn-danger pull-right" *ngIf="action === 'Delete'">Delete</button>
         </div>
       </form>
 

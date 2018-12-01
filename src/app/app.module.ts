@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { DataTablesModule } from 'angular-datatables';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,6 +14,8 @@ import { SubscribersComponent } from './components/subscribers/subscribers.compo
 import { ComplaintsComponent } from './components/complaints/complaints.component';
 import { AuditTrailComponent } from './components/audit-trail/audit-trail.component';
 import { CrudSubscribersComponent } from './components/crud-subscribers/crud-subscribers.component';
+
+import {SubscriberService} from './services/subscriber.service'
 
 @NgModule({
   declarations: [
@@ -30,11 +32,12 @@ import { CrudSubscribersComponent } from './components/crud-subscribers/crud-sub
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     DataTablesModule,
     HttpClientModule,
     FlashMessagesModule.forRoot()
   ],
-  providers: [],
+  providers: [SubscriberService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
