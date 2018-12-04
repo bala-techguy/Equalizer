@@ -26,7 +26,7 @@ export class SubscriberService {
     State: new FormControl('', Validators.required),
     Country: new FormControl('', Validators.required),
     Pin: new FormControl('', Validators.required),
-    Email: new FormControl('', Validators.required),
+    Email: new FormControl('', [Validators.required,Validators.email]),
     Mobile: new FormControl('', [Validators.required,Validators.minLength(8)]),
     Phone: new FormControl(''),
     ModifiedDate: new FormControl(''),
@@ -34,7 +34,7 @@ export class SubscriberService {
     DueDate: new FormControl(''),
     IsInvalid: new FormControl(''),
     CreatedByUserName: new FormControl(''),
-    LoyaltyUserId: new FormControl(''),
+    LoyaltyUserId: new FormControl('', Validators.required),
     RenewedDate: new FormControl('')
   })
 

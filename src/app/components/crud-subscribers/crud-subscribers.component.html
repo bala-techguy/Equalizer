@@ -16,6 +16,8 @@
     <div class="box box-primary">
       <div class="box-header with-border">
         <h3 class="box-title"></h3>
+        <button type="button" class="btn bg-maroon pull-right" *ngIf="action === 'Modify'" data-toggle="modal"
+          data-target="#modal-default">Renew</button>
       </div>
 
       <!-- /.box-header -->
@@ -46,24 +48,39 @@
               <input type="text" class="form-control" formControlName="CustomerName" id="customerName" placeholder="Customer Name"
                 [ngClass]="{'is-invalid':submitted && formControls.CustomerName.errors}">
               <div class="invalid-feedback" *ngIf="submitted && formControls.CustomerName.errors">
-                <span class="help-block">This field is required.</span>
+                <span class="help-block" *ngIf="submitted && formControls.CustomerName.errors.required">This field is
+                  required.</span>
+                <span class="help-block" *ngIf="submitted && formControls.CustomerName.errors.maxlength">This field
+                  length should be maximum of 40 Characters</span>
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{'has-error':submitted && formControls.Email.errors}">
               <label for="email">Email</label>
-              <input type="email" class="form-control" formControlName="Email" id="email" placeholder="Email">
+              <input type="email" class="form-control" formControlName="Email" id="email" placeholder="Email" [ngClass]="{'is-invalid':submitted && formControls.Email.errors}">
+              <div class="invalid-feedback" *ngIf="submitted && formControls.Email.errors">
+                <span class="help-block" *ngIf="submitted && formControls.Email.errors.required">This field is
+                  required.</span>
+                <span class="help-block" *ngIf="submitted && formControls.Email.errors.email">Please enter a valid
+                  Email.</span>
+              </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <div class="form-group">
+                <div class="form-group" [ngClass]="{'has-error':submitted && formControls.Mobile.errors}">
                   <label for="mobile">Mobile</label>
-                  <input type="number" class="form-control" formControlName="Mobile" id="mobile" placeholder="Mobile">
+                  <input type="number" class="form-control" formControlName="Mobile" id="mobile" placeholder="Mobile"
+                    [ngClass]="{'is-invalid':submitted && formControls.Mobile.errors}">
+                  <div class="invalid-feedback" *ngIf="submitted && formControls.Mobile.errors">
+                    <span class="help-block" *ngIf="submitted && formControls.Mobile.errors.required">This field is
+                      required.</span>
+                  </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="phone">Phone</label>
-                  <input type="number" class="form-control" formControlName="Phone" id="phone" placeholder="Phone">
+                  <input type="number" class="form-control" formControlName="Phone" id="phone" placeholder="Phone"
+                    [ngClass]="{'is-invalid':submitted && formControls.Email.errors}">
                 </div>
               </div>
             </div>
@@ -76,7 +93,7 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="dateCreated">Date Created</label>
+                  <label for="dateModified">Date Modified</label>
                   <input type="date" class="form-control" formControlName="ModifiedDate" id="dateModified" placeholder="Date Modified">
                 </div>
               </div>
@@ -87,16 +104,26 @@
             </div>
             <div class="row">
               <div class="col-md-6">
-                <div class="form-group">
+                <div class="form-group" [ngClass]="{'has-error':submitted && formControls.TypeId.errors}">
                   <label for="typeId">Subscription Type</label>
-                  <input type="number" class="form-control" formControlName="TypeId" id="typeId" placeholder="Subscription Type">
+                  <input type="number" class="form-control" formControlName="TypeId" id="typeId" placeholder="Subscription Type"
+                    [ngClass]="{'is-invalid':submitted && formControls.TypeId.errors}">
+                  <div class="invalid-feedback" *ngIf="submitted && formControls.TypeId.errors">
+                    <span class="help-block" *ngIf="submitted && formControls.TypeId.errors.required">This field is
+                      required.</span>
+                  </div>
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="form-group">
+                <div class="form-group" [ngClass]="{'has-error':submitted && formControls.LoyaltyUserId.errors}">
                   <label for="loyaltyUserId">Loyalty User</label>
                   <input type="text" class="form-control" formControlName="LoyaltyUserId" id="loyaltyUserId"
-                    placeholder="Loyalty User">
+                    placeholder="Loyalty User" [ngClass]="{'has-error':submitted && formControls.LoyaltyUserId.errors}">
+                  <div class="invalid-feedback" *ngIf="submitted && formControls.LoyaltyUserId.errors">
+                    <span class="help-block" *ngIf="submitted && formControls.LoyaltyUserId.errors.required">This field
+                      is
+                      required.</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -104,7 +131,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="dueDate">Due Date</label>
-                  <input type="date" class="form-control" formControlName="ModifiedDate" id="dueDate" placeholder="Due Date">
+                  <input type="date" class="form-control" formControlName="DueDate" id="dueDate" placeholder="Due Date">
                 </div>
               </div>
               <div class="col-md-6">
@@ -116,13 +143,27 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{'has-error':submitted && formControls.Address1.errors}">
               <label for="address1">Address Line 1</label>
-              <input type="text" class="form-control" formControlName="Address1" id="address1" placeholder="Address Line 1">
+              <input type="text" class="form-control" formControlName="Address1" id="address1" placeholder="Address Line 1"
+                [ngClass]="{'has-error':submitted && formControls.Address1.errors}">
+              <div class="invalid-feedback" *ngIf="submitted && formControls.Address1.errors">
+                <span class="help-block" *ngIf="submitted && formControls.Address1.errors.required">This field is
+                  required.</span>
+                <span class="help-block" *ngIf="submitted && formControls.Address1.errors.maxlength">This field
+                  length should be maximum of 20 Characters</span>
+              </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{'has-error':submitted && formControls.Address2.errors}">
               <label for="address2">Address Line 2</label>
-              <input type="text" class="form-control" formControlName="Address2" id="address2" placeholder="Address Line 2">
+              <input type="text" class="form-control" formControlName="Address2" id="address2" placeholder="Address Line 2"
+                [ngClass]="{'has-error':submitted && formControls.Address2.errors}">
+              <div class="invalid-feedback" *ngIf="submitted && formControls.Address2.errors">
+                <span class="help-block" *ngIf="submitted && formControls.Address2.errors.required">This field is
+                  required.</span>
+                <span class="help-block" *ngIf="submitted && formControls.Address2.errors.maxlength">This field
+                  length should be maximum of 20 Characters</span>
+              </div>
             </div>
             <div class="form-group">
               <label for="address3">Address Line 3</label>
@@ -130,35 +171,58 @@
             </div>
             <div class="row">
               <div class="col-md-6">
-                <div class="form-group">
+                <div class="form-group" [ngClass]="{'has-error':submitted && formControls.City.errors}">
                   <label for="city">City</label>
-                  <input type="text" class="form-control" formControlName="City" id="city" placeholder="City">
+                  <input type="text" class="form-control" formControlName="City" id="city" placeholder="City" [ngClass]="{'has-error':submitted && formControls.City.errors}">
+                  <div class="invalid-feedback" *ngIf="submitted && formControls.City.errors">
+                    <span class="help-block" *ngIf="submitted && formControls.City.errors.required">This field
+                      is
+                      required.</span>
+                  </div>
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="form-group">
+                <div class="form-group" [ngClass]="{'has-error':submitted && formControls.State.errors}">
                   <label for="state">State</label>
-                  <input type="text" class="form-control" formControlName="State" id="state" placeholder="State">
+                  <input type="text" class="form-control" formControlName="State" id="state" placeholder="State"
+                    [ngClass]="{'has-error':submitted && formControls.State.errors}">
+                  <div class="invalid-feedback" *ngIf="submitted && formControls.State.errors">
+                    <span class="help-block" *ngIf="submitted && formControls.State.errors.required">This field
+                      is
+                      required.</span>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <div class="form-group">
+                <div class="form-group" [ngClass]="{'has-error':submitted && formControls.Country.errors}">
                   <label for="country">Country</label>
-                  <input type="text" class="form-control" formControlName="Country" id="country" placeholder="Country">
+                  <input type="text" class="form-control" formControlName="Country" id="country" placeholder="Country"
+                    [ngClass]="{'has-error':submitted && formControls.Country.errors}">
+                  <div class="invalid-feedback" *ngIf="submitted && formControls.Country.errors">
+                    <span class="help-block" *ngIf="submitted && formControls.Country.errors.required">This field
+                      is
+                      required.</span>
+                  </div>
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="form-group">
+                <div class="form-group" [ngClass]="{'has-error':submitted && formControls.Pin.errors}">
                   <label for="pin">Pin Code</label>
-                  <input type="number" class="form-control" formControlName="Pin" id="pin" placeholder="Pin Code">
+                  <input type="number" class="form-control" formControlName="Pin" id="pin" placeholder="Pin Code"
+                    [ngClass]="{'has-error':submitted && formControls.Pin.errors}">
+                  <div class="invalid-feedback" *ngIf="submitted && formControls.Pin.errors">
+                    <span class="help-block" *ngIf="submitted && formControls.Pin.errors.required">This field
+                      is
+                      required.</span>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="form-group">
               <label for="comments">Comments</label>
-              <textarea class="form-control" rows="3" id="comments" formControlName="Comments" placeholder="Comments"></textarea>
+              <textarea class="form-control" rows="5" id="comments" formControlName="Comments" placeholder="Comments"></textarea>
             </div>
           </div>
         </div>
@@ -166,7 +230,7 @@
 
         <div class="box-footer">
           <button type="submit" class="btn btn-primary" *ngIf="action === 'Add' || action === 'Modify'">Submit</button>
-          <button type="submit" class="btn btn-danger pull-right" *ngIf="action === 'Delete'">Delete</button>
+          <button type="button" class="btn btn-danger pull-right" *ngIf="action === 'Delete'">Delete</button>
         </div>
       </form>
 
@@ -177,3 +241,70 @@
   </div>
   <!-- /.row -->
 </section>
+
+<div class="modal fade" id="modal-default">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Renew Subscription</h4>
+      </div>
+      <div class="modal-body">
+        <section class="content">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- general form elements -->
+              <div class="box box-primary">
+                <form [formGroup]="this.subscriberService.subscribersForm">
+                  <div class="box-body">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group" [ngClass]="{'has-error':submitted && formControls.TypeId.errors}">
+                          <label for="typeId">Subscription Type</label>
+                          <input type="number" class="form-control" formControlName="TypeId" id="typeId" placeholder="Subscription Type"
+                            [ngClass]="{'is-invalid':submitted && formControls.TypeId.errors}">
+                          <div class="invalid-feedback" *ngIf="submitted && formControls.TypeId.errors">
+                            <span class="help-block" *ngIf="submitted && formControls.TypeId.errors.required">This
+                              field is
+                              required.</span>
+                          </div>
+                        </div>
+                        <div class="form-group" [ngClass]="{'has-error':submitted && formControls.LoyaltyUserId.errors}">
+                          <label for="loyaltyUserId">Loyalty User</label>
+                          <input type="text" class="form-control" formControlName="LoyaltyUserId" id="loyaltyUserId"
+                            placeholder="Loyalty User" [ngClass]="{'has-error':submitted && formControls.LoyaltyUserId.errors}">
+                          <div class="invalid-feedback" *ngIf="submitted && formControls.LoyaltyUserId.errors">
+                            <span class="help-block" *ngIf="submitted && formControls.LoyaltyUserId.errors.required">This
+                              field
+                              is
+                              required.</span>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="dueDate">Due Date</label>
+                          <input type="date" class="form-control" formControlName="DueDate" id="dueDate" placeholder="Due Date">
+                        </div>
+                        <div class="form-group">
+                          <label for="renewedDate">Renewed Date</label>
+                          <input type="date" class="form-control" formControlName="RenewedDate" id="renewedDate"
+                            placeholder="Renewed Date">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
