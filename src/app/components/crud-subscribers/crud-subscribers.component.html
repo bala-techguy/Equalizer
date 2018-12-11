@@ -22,7 +22,7 @@
 
       <!-- /.box-header -->
       <!-- form start -->
-      <form [formGroup]="this.subscriberService.subscribersForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="this.subscriberService.subscribersForm" (ngSubmit)="onSubmit(this.subscriberService.subscribersForm.value, this.subscriberService.subscribersForm.valid)">
         <input type="hidden" formControlName="InternalId">
         <div class="box-body">
           <div class="col-md-6">
@@ -30,7 +30,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="subscriptionNo">Subscription Number</label>
-                  <input type="number" class="form-control" formControlName="SubscriptionNo" id="subscriptionNo"
+                  <input type="text" class="form-control" formControlName="SubscriptionNo" id="subscriptionNo"
                     placeholder="Subscription Number">
                 </div>
               </div>
@@ -44,7 +44,7 @@
               </div>
             </div>
             <div class="form-group" [ngClass]="{'has-error':submitted && formControls.CustomerName.errors}">
-              <label for="customerName">Customer Name</label>
+              <label for="customerName">Customer Name <span style="color:red">*</span></label>
               <input type="text" class="form-control" formControlName="CustomerName" id="customerName" placeholder="Customer Name"
                 [ngClass]="{'is-invalid':submitted && formControls.CustomerName.errors}">
               <div class="invalid-feedback" *ngIf="submitted && formControls.CustomerName.errors">
@@ -55,7 +55,7 @@
               </div>
             </div>
             <div class="form-group" [ngClass]="{'has-error':submitted && formControls.Email.errors}">
-              <label for="email">Email</label>
+              <label for="email">Email <span style="color:red">*</span></label>
               <input type="email" class="form-control" formControlName="Email" id="email" placeholder="Email" [ngClass]="{'is-invalid':submitted && formControls.Email.errors}">
               <div class="invalid-feedback" *ngIf="submitted && formControls.Email.errors">
                 <span class="help-block" *ngIf="submitted && formControls.Email.errors.required">This field is
@@ -67,8 +67,8 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group" [ngClass]="{'has-error':submitted && formControls.Mobile.errors}">
-                  <label for="mobile">Mobile</label>
-                  <input type="number" class="form-control" formControlName="Mobile" id="mobile" placeholder="Mobile"
+                  <label for="mobile">Mobile <span style="color:red">*</span></label>
+                  <input type="text" class="form-control" formControlName="Mobile" id="mobile" placeholder="Mobile"
                     [ngClass]="{'is-invalid':submitted && formControls.Mobile.errors}">
                   <div class="invalid-feedback" *ngIf="submitted && formControls.Mobile.errors">
                     <span class="help-block" *ngIf="submitted && formControls.Mobile.errors.required">This field is
@@ -79,7 +79,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="phone">Phone</label>
-                  <input type="number" class="form-control" formControlName="Phone" id="phone" placeholder="Phone"
+                  <input type="text" class="form-control" formControlName="Phone" id="phone" placeholder="Phone"
                     [ngClass]="{'is-invalid':submitted && formControls.Email.errors}">
                 </div>
               </div>
@@ -105,7 +105,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group" [ngClass]="{'has-error':submitted && formControls.TypeId.errors}">
-                  <label for="typeId">Subscription Type</label>
+                  <label for="typeId">Subscription Type <span style="color:red">*</span></label>
                   <select class="form-control select2" formControlName="TypeId" id="typeId" [ngClass]="{'is-invalid':submitted && formControls.TypeId.errors}">
                     <option *ngFor = "let type of types" [ngValue]="type">{{type}}</option>
                   </select>
@@ -119,7 +119,7 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group" [ngClass]="{'has-error':submitted && formControls.LoyaltyUserId.errors}">
-                  <label for="loyaltyUserId">Loyalty User</label>
+                  <label for="loyaltyUserId">Loyalty User <span style="color:red">*</span></label>
                   <input type="text" class="form-control" formControlName="LoyaltyUserId" id="loyaltyUserId"
                     placeholder="Loyalty User" [ngClass]="{'has-error':submitted && formControls.LoyaltyUserId.errors}">
                   <div class="invalid-feedback" *ngIf="submitted && formControls.LoyaltyUserId.errors">
@@ -147,7 +147,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group" [ngClass]="{'has-error':submitted && formControls.Address1.errors}">
-              <label for="address1">Address Line 1</label>
+              <label for="address1">Address Line 1 <span style="color:red">*</span></label>
               <input type="text" class="form-control" formControlName="Address1" id="address1" placeholder="Address Line 1"
                 [ngClass]="{'has-error':submitted && formControls.Address1.errors}">
               <div class="invalid-feedback" *ngIf="submitted && formControls.Address1.errors">
@@ -158,7 +158,7 @@
               </div>
             </div>
             <div class="form-group" [ngClass]="{'has-error':submitted && formControls.Address2.errors}">
-              <label for="address2">Address Line 2</label>
+              <label for="address2">Address Line 2 <span style="color:red">*</span></label>
               <input type="text" class="form-control" formControlName="Address2" id="address2" placeholder="Address Line 2"
                 [ngClass]="{'has-error':submitted && formControls.Address2.errors}">
               <div class="invalid-feedback" *ngIf="submitted && formControls.Address2.errors">
@@ -175,7 +175,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group" [ngClass]="{'has-error':submitted && formControls.City.errors}">
-                  <label for="city">City</label>
+                  <label for="city">City <span style="color:red">*</span></label>
                   <input type="text" class="form-control" formControlName="City" id="city" placeholder="City" [ngClass]="{'has-error':submitted && formControls.City.errors}">
                   <div class="invalid-feedback" *ngIf="submitted && formControls.City.errors">
                     <span class="help-block" *ngIf="submitted && formControls.City.errors.required">This field
@@ -186,7 +186,7 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group" [ngClass]="{'has-error':submitted && formControls.State.errors}">
-                  <label for="state">State</label>
+                  <label for="state">State <span style="color:red">*</span></label>
                   <input type="text" class="form-control" formControlName="State" id="state" placeholder="State"
                     [ngClass]="{'has-error':submitted && formControls.State.errors}">
                   <div class="invalid-feedback" *ngIf="submitted && formControls.State.errors">
@@ -200,7 +200,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group" [ngClass]="{'has-error':submitted && formControls.Country.errors}">
-                  <label for="country">Country</label>
+                  <label for="country">Country <span style="color:red">*</span></label>
                   <input type="text" class="form-control" formControlName="Country" id="country" placeholder="Country"
                     [ngClass]="{'has-error':submitted && formControls.Country.errors}">
                   <div class="invalid-feedback" *ngIf="submitted && formControls.Country.errors">
@@ -212,8 +212,8 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group" [ngClass]="{'has-error':submitted && formControls.Pin.errors}">
-                  <label for="pin">Pin Code</label>
-                  <input type="number" class="form-control" formControlName="Pin" id="pin" placeholder="Pin Code"
+                  <label for="pin">Pin Code <span style="color:red">*</span></label>
+                  <input type="text" class="form-control" formControlName="Pin" id="pin" placeholder="Pin Code"
                     [ngClass]="{'has-error':submitted && formControls.Pin.errors}">
                   <div class="invalid-feedback" *ngIf="submitted && formControls.Pin.errors">
                     <span class="help-block" *ngIf="submitted && formControls.Pin.errors.required">This field

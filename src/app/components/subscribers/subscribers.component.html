@@ -43,7 +43,7 @@
                 <td>{{sub.DueDate }}</td>
                 <td>
                   <div class="btn-group">
-                    <button [routerLink]="['/subscribers/view/'+sub.SubscriptionNo]" href="" type="button" class="btn btn-info btn-flat">View</button>
+                    <button [routerLink]="['/subscribers/view/'+sub.SubscriptionNo]" href="" type="button" class="btn btn-info btn-flat" (click) = "subscriberService.loadForm(sub)">View</button>
                     <button [routerLink]="['/subscribers/modify/'+sub.SubscriptionNo]" type="button" class="btn btn-warning btn-flat">Modify</button>
                     <button [routerLink]="['/subscribers/delete/'+sub.SubscriptionNo]" type="button" class="btn btn-danger btn-flat">Delete</button>
                   </div>
