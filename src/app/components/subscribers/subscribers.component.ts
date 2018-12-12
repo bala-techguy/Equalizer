@@ -15,7 +15,7 @@ export class SubscribersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.subscriberService.getSubscribers());
+    //console.log(this.subscriberService.getSubscribers());
     this.subscribers = this.subscriberService.getSubscribers();
     // this.subscriberService.getSubscribers().subscribe(
     //   subscribers => {

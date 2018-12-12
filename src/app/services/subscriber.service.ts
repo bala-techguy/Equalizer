@@ -38,10 +38,22 @@ export class SubscriberService {
     RenewedDate: new FormControl('')
   })
 
-  insertSubscribers(model) {
+  insertSubscriber(model) {
 
     console.log(model);
     // After writing the values into database
+    this.subscribersForm.reset();
+  }
+
+  editSubscriber(model) {
+
+    console.log(model);
+    // After writing the values into database
+    this.subscribersForm.reset();
+  }
+
+  deleteSubscriber(model) {
+    console.log(model);
     this.subscribersForm.reset();
   }
 

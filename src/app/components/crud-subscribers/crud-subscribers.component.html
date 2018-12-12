@@ -107,7 +107,7 @@
                 <div class="form-group" [ngClass]="{'has-error':submitted && formControls.TypeId.errors}">
                   <label for="typeId">Subscription Type <span style="color:red">*</span></label>
                   <select class="form-control select2" formControlName="TypeId" id="typeId" [ngClass]="{'is-invalid':submitted && formControls.TypeId.errors}">
-                    <option *ngFor = "let type of types" [ngValue]="type">{{type}}</option>
+                    <option *ngFor="let type of types" [ngValue]="type">{{type}}</option>
                   </select>
                   <!-- <input type="number" class="form-control" formControlName="TypeId" id="typeId" placeholder="Subscription Type"
                     [ngClass]="{'is-invalid':submitted && formControls.TypeId.errors}"> -->
@@ -233,7 +233,95 @@
 
         <div class="box-footer">
           <button type="submit" class="btn btn-primary" *ngIf="action === 'Add' || action === 'Modify'">Submit</button>
-          <button type="button" class="btn btn-danger pull-right" *ngIf="action === 'Delete'">Delete</button>
+          <button type="button" class="btn btn-danger pull-right" *ngIf="action === 'Delete'" data-toggle="modal"
+            data-target="#modal-danger">Delete</button>
+        </div>
+        <div class="modal fade" id="modal-default">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Renew Subscription</h4>
+              </div>
+              <div class="modal-body">
+                <section class="content">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <!-- general form elements -->
+                      <div class="box box-primary">
+                        <form [formGroup]="this.subscriberService.subscribersForm">
+                          <div class="box-body">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="form-group" [ngClass]="{'has-error':submitted && formControls.TypeId.errors}">
+                                  <label for="typeId">Subscription Type</label>
+                                  <input type="number" class="form-control" formControlName="TypeId" id="typeId"
+                                    placeholder="Subscription Type" [ngClass]="{'is-invalid':submitted && formControls.TypeId.errors}">
+                                  <div class="invalid-feedback" *ngIf="submitted && formControls.TypeId.errors">
+                                    <span class="help-block" *ngIf="submitted && formControls.TypeId.errors.required">This
+                                      field is
+                                      required.</span>
+                                  </div>
+                                </div>
+                                <div class="form-group" [ngClass]="{'has-error':submitted && formControls.LoyaltyUserId.errors}">
+                                  <label for="loyaltyUserId">Loyalty User</label>
+                                  <input type="text" class="form-control" formControlName="LoyaltyUserId" id="loyaltyUserId"
+                                    placeholder="Loyalty User" [ngClass]="{'has-error':submitted && formControls.LoyaltyUserId.errors}">
+                                  <div class="invalid-feedback" *ngIf="submitted && formControls.LoyaltyUserId.errors">
+                                    <span class="help-block" *ngIf="submitted && formControls.LoyaltyUserId.errors.required">This
+                                      field
+                                      is
+                                      required.</span>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label for="dueDate">Due Date</label>
+                                  <input type="date" class="form-control" formControlName="DueDate" id="dueDate"
+                                    placeholder="Due Date">
+                                </div>
+                                <div class="form-group">
+                                  <label for="renewedDate">Renewed Date</label>
+                                  <input type="date" class="form-control" formControlName="RenewedDate" id="renewedDate"
+                                    placeholder="Renewed Date">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <div class="modal modal-danger fade" id="modal-danger">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Delete Confirmation</h4>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure you want to delete this Subscriber?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline" data-dismiss="modal" (click)=delete(this.subscriberService.subscribersForm.value)>Delete</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
         </div>
       </form>
 
@@ -244,70 +332,3 @@
   </div>
   <!-- /.row -->
 </section>
-
-<div class="modal fade" id="modal-default">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Renew Subscription</h4>
-      </div>
-      <div class="modal-body">
-        <section class="content">
-          <div class="row">
-            <div class="col-md-12">
-              <!-- general form elements -->
-              <div class="box box-primary">
-                <form [formGroup]="this.subscriberService.subscribersForm">
-                  <div class="box-body">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group" [ngClass]="{'has-error':submitted && formControls.TypeId.errors}">
-                          <label for="typeId">Subscription Type</label>
-                          <input type="number" class="form-control" formControlName="TypeId" id="typeId" placeholder="Subscription Type"
-                            [ngClass]="{'is-invalid':submitted && formControls.TypeId.errors}">
-                          <div class="invalid-feedback" *ngIf="submitted && formControls.TypeId.errors">
-                            <span class="help-block" *ngIf="submitted && formControls.TypeId.errors.required">This
-                              field is
-                              required.</span>
-                          </div>
-                        </div>
-                        <div class="form-group" [ngClass]="{'has-error':submitted && formControls.LoyaltyUserId.errors}">
-                          <label for="loyaltyUserId">Loyalty User</label>
-                          <input type="text" class="form-control" formControlName="LoyaltyUserId" id="loyaltyUserId"
-                            placeholder="Loyalty User" [ngClass]="{'has-error':submitted && formControls.LoyaltyUserId.errors}">
-                          <div class="invalid-feedback" *ngIf="submitted && formControls.LoyaltyUserId.errors">
-                            <span class="help-block" *ngIf="submitted && formControls.LoyaltyUserId.errors.required">This
-                              field
-                              is
-                              required.</span>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="dueDate">Due Date</label>
-                          <input type="date" class="form-control" formControlName="DueDate" id="dueDate" placeholder="Due Date">
-                        </div>
-                        <div class="form-group">
-                          <label for="renewedDate">Renewed Date</label>
-                          <input type="date" class="form-control" formControlName="RenewedDate" id="renewedDate"
-                            placeholder="Renewed Date">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>

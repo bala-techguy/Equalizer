@@ -51,12 +51,24 @@ export class CrudSubscribersComponent implements OnInit {
     return currentDate.toISOString().substring(0, 10);
   }
 
+  delete(model) {
+
+    this.subscriberService.deleteSubscriber(model);
+    this.router.navigate(['/subscribers']);
+
+  }
+
   onSubmit(model: Subscriber, isValid: boolean) {
     this.submitted = true;
     if (isValid) {
       if (this.subscriberService.subscribersForm.get('InternalId').value == null) {
         //console.log(model, isValid);
-        this.subscriberService.insertSubscribers(model);
+        this.subscriberService.insertSubscriber(model);
+        this.router.navigate(['/subscribers']);
+      }
+      else 
+      if (this.action == 'Modify') {
+        this.subscriberService.editSubscriber(model);
         this.router.navigate(['/subscribers']);
       }
 
