@@ -3,7 +3,7 @@ import { SubscriberService } from '../../services/subscriber.service'
 import { SubscriptionTypeService } from '../../services/subscription-type.service'
 import { Subscriber } from '../../models/subscriber';
 import { ActivatedRoute, Router } from '@angular/router';
-import { typeSourceSpan } from '@angular/compiler';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-crud-subscribers',
@@ -20,7 +20,8 @@ export class CrudSubscribersComponent implements OnInit {
     private subscriberService: SubscriberService,
     private route: ActivatedRoute,
     private router: Router,
-    private subscriptionType: SubscriptionTypeService
+    private subscriptionType: SubscriptionTypeService,
+    public datepipe: DatePipe
   ) { }
   submitted: boolean;
   formControls = this.subscriberService.subscribersForm.controls;
@@ -37,13 +38,50 @@ export class CrudSubscribersComponent implements OnInit {
 
     if (this.action == 'Add') {
       console.log(this.action);
+      this.subscriberService.subscribersForm.reset();
+      this.subscriberService.subscribersForm.enable();
       this.subscriberService.subscribersForm.controls['CreatedDate'].setValue(this.currentDate(), { onlySelf: true });
+      this.subscriberService.subscribersForm.controls['ModifiedDate'].setValue(this.currentDate(), { onlySelf: true });
     }
-    else {
-      
+    if (this.action == 'View' || this.action == 'Delete') {
+      console.log(this.subscriberService.subscribersForm.controls.CreatedDate);
+      //this.subscriberService.subscribersForm.controls['CreatedDate'].setValue(this.formatDate(this.subscriberService.subscribersForm.get('CreatedDate').value), { onlySelf: true });
+      //this.subscriberService.subscribersForm.controls['ModifiedDate'].setValue(this.formatDate(this.subscriberService.subscribersForm.get('ModifiedDate').value), { onlySelf: true });
+      //this.subscriberService.subscribersForm.controls['DueDate'].setValue(this.formatDate(this.subscriberService.subscribersForm.get('DueDate').value), { onlySelf: true });
+      //this.subscriberService.subscribersForm.controls['RenewedDate'].setValue(this.formatDate(this.subscriberService.subscribersForm.get('RenewedDate').value), { onlySelf: true });
+      this.subscriberService.subscribersForm.disable();
     }
-    
+    if (this.action == 'Modify') {
+      this.subscriberService.subscribersForm.enable();
+      this.subscriberService.subscribersForm.controls['CreatedDate'].disable();
+      this.subscriberService.subscribersForm.controls['ModifiedDate'].disable();
+      this.subscriberService.subscribersForm.controls['TypeId'].disable();
+      this.subscriberService.subscribersForm.controls['LoyaltyUserId'].disable();
+      this.subscriberService.subscribersForm.controls['DueDate'].disable();
+      this.subscriberService.subscribersForm.controls['RenewedDate'].disable();
+    }
 
+
+  }
+
+  renewClick() {
+
+  }
+
+  saveRenew() {
+    this.subscriberService.subscribersForm.controls['TypeId'].setValue(this.subscriberService.subscribersForm.get('NewTypeId').value, { onlySelf: true });
+    this.subscriberService.subscribersForm.controls['LoyaltyUserId'].setValue(this.subscriberService.subscribersForm.get('NewLoyaltyUserId').value, { onlySelf: true });
+    this.subscriberService.subscribersForm.controls['DueDate'].setValue(this.subscriberService.subscribersForm.get('NewDueDate').value, { onlySelf: true });
+    this.subscriberService.subscribersForm.controls['RenewedDate'].setValue(this.subscriberService.subscribersForm.get('NewRenewedDate').value, { onlySelf: true });
+
+  }
+
+  formatDate(date) {
+    const formattedDate = new Date(date);
+    console.log(formattedDate);
+    console.log(date);
+    return formattedDate.toISOString().substring(0, 10);
+    //return this.datepipe.transform(formattedDate, 'dd-mm-yyyy');
   }
 
   currentDate() {
@@ -66,11 +104,11 @@ export class CrudSubscribersComponent implements OnInit {
         this.subscriberService.insertSubscriber(model);
         this.router.navigate(['/subscribers']);
       }
-      else 
-      if (this.action == 'Modify') {
-        this.subscriberService.editSubscriber(model);
-        this.router.navigate(['/subscribers']);
-      }
+      else
+        if (this.action == 'Modify') {
+          this.subscriberService.editSubscriber(model);
+          this.router.navigate(['/subscribers']);
+        }
 
       this.submitted = false;
     }

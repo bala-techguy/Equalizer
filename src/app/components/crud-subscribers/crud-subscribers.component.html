@@ -17,7 +17,7 @@
       <div class="box-header with-border">
         <h3 class="box-title"></h3>
         <button type="button" class="btn bg-maroon pull-right" *ngIf="action === 'Modify'" data-toggle="modal"
-          data-target="#modal-default">Renew</button>
+          data-target="#modal-default" (click)='renewClick()'>Renew</button>
       </div>
 
       <!-- /.box-header -->
@@ -250,23 +250,24 @@
                     <div class="col-md-12">
                       <!-- general form elements -->
                       <div class="box box-primary">
-                        <form [formGroup]="this.subscriberService.subscribersForm">
                           <div class="box-body">
                             <div class="row">
                               <div class="col-md-12">
                                 <div class="form-group" [ngClass]="{'has-error':submitted && formControls.TypeId.errors}">
-                                  <label for="typeId">Subscription Type</label>
-                                  <input type="number" class="form-control" formControlName="TypeId" id="typeId"
-                                    placeholder="Subscription Type" [ngClass]="{'is-invalid':submitted && formControls.TypeId.errors}">
+                                  <label for="TypeId">Subscription Type <span style="color:red">*</span></label>
+                                  <select class="form-control select2" formControlName="NewTypeId" id="TypeId" [ngClass]="{'is-invalid':submitted && formControls.TypeId.errors}">
+                                    <option *ngFor="let type of types" [ngValue]="type">{{type}}</option>
+                                  </select>
+                                  <!-- <input type="number" class="form-control" formControlName="TypeId" id="typeId" placeholder="Subscription Type"
+                                    [ngClass]="{'is-invalid':submitted && formControls.TypeId.errors}"> -->
                                   <div class="invalid-feedback" *ngIf="submitted && formControls.TypeId.errors">
-                                    <span class="help-block" *ngIf="submitted && formControls.TypeId.errors.required">This
-                                      field is
+                                    <span class="help-block" *ngIf="submitted && formControls.TypeId.errors.required">This field is
                                       required.</span>
                                   </div>
                                 </div>
                                 <div class="form-group" [ngClass]="{'has-error':submitted && formControls.LoyaltyUserId.errors}">
                                   <label for="loyaltyUserId">Loyalty User</label>
-                                  <input type="text" class="form-control" formControlName="LoyaltyUserId" id="loyaltyUserId"
+                                  <input type="text" class="form-control" formControlName="NewLoyaltyUserId" id="loyaltyUserId"
                                     placeholder="Loyalty User" [ngClass]="{'has-error':submitted && formControls.LoyaltyUserId.errors}">
                                   <div class="invalid-feedback" *ngIf="submitted && formControls.LoyaltyUserId.errors">
                                     <span class="help-block" *ngIf="submitted && formControls.LoyaltyUserId.errors.required">This
@@ -277,18 +278,17 @@
                                 </div>
                                 <div class="form-group">
                                   <label for="dueDate">Due Date</label>
-                                  <input type="date" class="form-control" formControlName="DueDate" id="dueDate"
+                                  <input type="date" class="form-control" formControlName="NewDueDate" id="dueDate"
                                     placeholder="Due Date">
                                 </div>
                                 <div class="form-group">
                                   <label for="renewedDate">Renewed Date</label>
-                                  <input type="date" class="form-control" formControlName="RenewedDate" id="renewedDate"
+                                  <input type="date" class="form-control" formControlName="NewRenewedDate" id="renewedDate"
                                     placeholder="Renewed Date">
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </form>
                       </div>
                     </div>
                   </div>
@@ -296,7 +296,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" (click)="saveRenew()" data-dismiss="modal">Save changes</button>
               </div>
             </div>
             <!-- /.modal-content -->

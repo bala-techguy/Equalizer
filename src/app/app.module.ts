@@ -15,7 +15,8 @@ import { ComplaintsComponent } from './components/complaints/complaints.componen
 import { AuditTrailComponent } from './components/audit-trail/audit-trail.component';
 import { CrudSubscribersComponent } from './components/crud-subscribers/crud-subscribers.component';
 
-import {SubscriberService} from './services/subscriber.service'
+import { SubscriberService } from './services/subscriber.service'
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,10 @@ import {SubscriberService} from './services/subscriber.service'
     HttpClientModule,
     FlashMessagesModule.forRoot()
   ],
-  providers: [SubscriberService],
+  providers: [
+    SubscriberService,
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

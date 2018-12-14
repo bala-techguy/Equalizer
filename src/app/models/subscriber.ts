@@ -7,6 +7,7 @@ export interface Subscriber {
     SubscriptionNo?: string;
     CustomerName?: string;
     TypeId?: number;
+    NewTypeId?: number;
     Address1?: string;
     Address2?: string;
     Address3?: string;
@@ -20,11 +21,14 @@ export interface Subscriber {
     ModifiedDate?: any;
     Comments?: string;
     DueDate?: any;
+    NewDueDate?: any;
     IsInvalid?: boolean;
 
     CreatedByUserName?: string;
     LoyaltyUserId?: number;
+    NewLoyaltyUserId?: number;
     RenewedDate?: any;
+    NewRenewedDate?: any;
 
 }
 
