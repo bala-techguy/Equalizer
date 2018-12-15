@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SubscribersComponent } from './components/subscribers/subscribers.component';
 import { ComplaintsComponent } from './components/complaints/complaints.component';
 import { AuditTrailComponent } from './components/audit-trail/audit-trail.component';
+import { UsersComponent } from './components/users/users.component';
 import { CrudSubscribersComponent } from './components/crud-subscribers/crud-subscribers.component';
 import { AuthGuard } from './guards/auth.guard';
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'subscribers/delete/:id', component: CrudSubscribersComponent,data : {action : 'Delete'}, canActivate: [AuthGuard]},
   {path: 'complaints', component: ComplaintsComponent, canActivate: [AuthGuard]},
   {path: 'audit-trail', component: AuditTrailComponent, canActivate: [AuthGuard]},
+  {path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
   //{ path: '**', redirectTo: ''}
 ];
 

@@ -13,10 +13,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SubscribersComponent } from './components/subscribers/subscribers.component';
 import { ComplaintsComponent } from './components/complaints/complaints.component';
 import { AuditTrailComponent } from './components/audit-trail/audit-trail.component';
+import { UsersComponent } from './components/users/users.component';
 import { CrudSubscribersComponent } from './components/crud-subscribers/crud-subscribers.component';
 
 import { SubscriberService } from './services/subscriber.service'
 import { DatePipe } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { DatePipe } from '@angular/common';
     SubscribersComponent,
     ComplaintsComponent,
     AuditTrailComponent,
-    CrudSubscribersComponent
+    CrudSubscribersComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

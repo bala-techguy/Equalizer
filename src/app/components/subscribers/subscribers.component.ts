@@ -29,7 +29,6 @@ export class SubscribersComponent implements OnInit {
       dom: 'Bfrtip',
       // Configure the buttons
       buttons: [
-        'colvis',
         'copy',
         'print',
         'excel'
