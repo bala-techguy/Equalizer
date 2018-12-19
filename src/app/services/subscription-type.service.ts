@@ -36,7 +36,6 @@ export class SubscriptionTypeService {
       return data;
     });
 
-    //return this.clientsCollection.snapshotChanges();
   }
 
 }

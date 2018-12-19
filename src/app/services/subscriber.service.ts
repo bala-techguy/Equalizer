@@ -685,7 +685,6 @@ export class SubscriberService {
       return data;
     });
 
-    //return this.clientsCollection.snapshotChanges();
   }
 
 
