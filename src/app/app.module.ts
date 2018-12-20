@@ -18,6 +18,7 @@ import { CrudSubscribersComponent } from './components/crud-subscribers/crud-sub
 
 import { SubscriberService } from './services/subscriber.service'
 import { DatePipe } from '@angular/common';
+import { CrudComplaintsComponent } from './components/crud-complaints/crud-complaints.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { DatePipe } from '@angular/common';
     ComplaintsComponent,
     AuditTrailComponent,
     CrudSubscribersComponent,
-    UsersComponent
+    UsersComponent,
+    CrudComplaintsComponent
   ],
   imports: [
     BrowserModule,

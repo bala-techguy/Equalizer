@@ -4,6 +4,7 @@ import { SubscriptionTypeService } from '../../services/subscription-type.servic
 import { Subscriber } from '../../models/subscriber';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { createEmptyStateSnapshot } from '@angular/router/src/router_state';
 
 @Component({
   selector: 'app-crud-subscribers',
@@ -28,12 +29,14 @@ export class CrudSubscribersComponent implements OnInit {
 
   ngOnInit() {
     this.action = this.route.snapshot.data['action'];
+    //console.log(this.subscriberService.subscribersForm.get('TypeId').value[0].Name);
     var values = [];
     this.subscriptionType.getSubscriptionType().forEach(function (value) {
       values.push(value.Name);
+      //console.log(value.Name);
     });
     this.types = values;
-    console.log(this.currentDate());
+    //console.log(this.currentDate());
 
 
     if (this.action == 'Add') {
@@ -44,7 +47,8 @@ export class CrudSubscribersComponent implements OnInit {
       this.subscriberService.subscribersForm.controls['ModifiedDate'].setValue(this.currentDate(), { onlySelf: true });
     }
     if (this.action == 'View' || this.action == 'Delete') {
-      console.log(this.subscriberService.subscribersForm.controls.CreatedDate);
+      //console.log(this.subscriberService.subscribersForm.controls.CreatedDate);
+      //this.subscriberService.subscribersForm.controls['TypeId'].setValue(this.subscriberService.subscribersForm.get('TypeId').value[0].Name, { onlySelf: true });
       //this.subscriberService.subscribersForm.controls['CreatedDate'].setValue(this.formatDate(this.subscriberService.subscribersForm.get('CreatedDate').value), { onlySelf: true });
       //this.subscriberService.subscribersForm.controls['ModifiedDate'].setValue(this.formatDate(this.subscriberService.subscribersForm.get('ModifiedDate').value), { onlySelf: true });
       //this.subscriberService.subscribersForm.controls['DueDate'].setValue(this.formatDate(this.subscriberService.subscribersForm.get('DueDate').value), { onlySelf: true });
@@ -55,6 +59,7 @@ export class CrudSubscribersComponent implements OnInit {
       this.subscriberService.subscribersForm.enable();
       this.subscriberService.subscribersForm.controls['CreatedDate'].disable();
       this.subscriberService.subscribersForm.controls['ModifiedDate'].disable();
+      this.subscriberService.subscribersForm.controls['TypeId'].setValue(this.subscriberService.subscribersForm.get('TypeId').value[0].Name, { onlySelf: true });
       this.subscriberService.subscribersForm.controls['TypeId'].disable();
       this.subscriberService.subscribersForm.controls['LoyaltyUserId'].disable();
       this.subscriberService.subscribersForm.controls['DueDate'].disable();
@@ -65,6 +70,8 @@ export class CrudSubscribersComponent implements OnInit {
   }
 
   renewClick() {
+
+    this.subscriberService.subscribersForm.controls['NewTypeId'].setValue(this.subscriberService.subscribersForm.get('NewTypeId').value[0].Name, { onlySelf: true });
 
   }
 

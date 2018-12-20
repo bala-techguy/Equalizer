@@ -7,6 +7,7 @@ import { ComplaintsComponent } from './components/complaints/complaints.componen
 import { AuditTrailComponent } from './components/audit-trail/audit-trail.component';
 import { UsersComponent } from './components/users/users.component';
 import { CrudSubscribersComponent } from './components/crud-subscribers/crud-subscribers.component';
+import { CrudComplaintsComponent } from './components/crud-complaints/crud-complaints.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
   {path: 'subscribers/modify/:id', component: CrudSubscribersComponent,data : {action : 'Modify'}, canActivate: [AuthGuard]},
   {path: 'subscribers/delete/:id', component: CrudSubscribersComponent,data : {action : 'Delete'}, canActivate: [AuthGuard]},
   {path: 'complaints', component: ComplaintsComponent, canActivate: [AuthGuard]},
+  {path: 'complaints/add', component: CrudComplaintsComponent,data : {action : 'Add'}, canActivate: [AuthGuard]},
+  {path: 'complaints/view/:id', component: CrudComplaintsComponent,data : {action : 'View'}, canActivate: [AuthGuard]},
+  {path: 'complaints/modify/:id', component: CrudComplaintsComponent,data : {action : 'Modify'}, canActivate: [AuthGuard]},
+  {path: 'complaints/delete/:id', component: CrudComplaintsComponent,data : {action : 'Delete'}, canActivate: [AuthGuard]},
   {path: 'audit-trail', component: AuditTrailComponent, canActivate: [AuthGuard]},
   {path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
   //{ path: '**', redirectTo: ''}

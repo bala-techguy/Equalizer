@@ -253,15 +253,15 @@
                           <div class="box-body">
                             <div class="row">
                               <div class="col-md-12">
-                                <div class="form-group" [ngClass]="{'has-error':submitted && formControls.TypeId.errors}">
-                                  <label for="TypeId">Subscription Type <span style="color:red">*</span></label>
-                                  <select class="form-control select2" formControlName="NewTypeId" id="TypeId" [ngClass]="{'is-invalid':submitted && formControls.TypeId.errors}">
+                                <div class="form-group" [ngClass]="{'has-error':submitted && formControls.NewTypeId.errors}">
+                                  <label for="newTypeId">Subscription Type <span style="color:red">*</span></label>
+                                  <select class="form-control select2" formControlName="NewTypeId" id="newTypeId" [ngClass]="{'is-invalid':submitted && formControls.NewTypeId.errors}">
                                     <option *ngFor="let type of types" [ngValue]="type">{{type}}</option>
                                   </select>
                                   <!-- <input type="number" class="form-control" formControlName="TypeId" id="typeId" placeholder="Subscription Type"
                                     [ngClass]="{'is-invalid':submitted && formControls.TypeId.errors}"> -->
-                                  <div class="invalid-feedback" *ngIf="submitted && formControls.TypeId.errors">
-                                    <span class="help-block" *ngIf="submitted && formControls.TypeId.errors.required">This field is
+                                  <div class="invalid-feedback" *ngIf="submitted && formControls.NewTypeId.errors">
+                                    <span class="help-block" *ngIf="submitted && formControls.NewTypeId.errors.required">This field is
                                       required.</span>
                                   </div>
                                 </div>

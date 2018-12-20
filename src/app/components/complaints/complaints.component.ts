@@ -16,6 +16,7 @@ export class ComplaintsComponent implements OnInit {
   ngOnInit() {
 
     this.complaints = this.complaintService.getComplaints();
+    console.log(this.complaints);
 
     this.dtOptions = {
       // Declare the use of the extension in the dom parameter

@@ -1,8 +1,8 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Subscribers
-    <small>A table that displays the list of Subscribers</small>
+    Complaints
+    <small>A table that displays the list of Complaints</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="#" routerLink="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -36,13 +36,13 @@
               <tr *ngFor="let complaint of complaints">
                 <td>{{complaint.ComplaintId }}</td>
                 <td>{{complaint.SubscriptionNo }}</td>
-                <td>{{complaint.Description }}</td>
+                <td>{{complaint.Description.slice(0,25) }}...</td>
                 <td>{{complaint.Status }}</td>
                 <td>
                   <div class="btn-group">
-                    <button [routerLink]="['/complaints/view/'+complaint.ComplaintId]" href="" type="button" class="btn btn-info btn-flat" (click) = "complaintService.loadForm(sub)">View</button>
-                    <button [routerLink]="['/complaints/modify/'+complaint.ComplaintId]" type="button" class="btn btn-warning btn-flat" (click) = "complaintService.loadForm(sub)">Modify</button>
-                    <button [routerLink]="['/complaints/delete/'+complaint.ComplaintId]" type="button" class="btn btn-danger btn-flat" (click) = "complaintService.loadForm(sub)">Delete</button>
+                    <button [routerLink]="['/complaints/view/'+complaint.ComplaintId]" href="" type="button" class="btn btn-info btn-flat" (click) = "complaintService.loadForm(complaint)">View</button>
+                    <button [routerLink]="['/complaints/modify/'+complaint.ComplaintId]" type="button" class="btn btn-warning btn-flat" (click) = "complaintService.loadForm(complaint)">Modify</button>
+                    <button [routerLink]="['/complaints/delete/'+complaint.ComplaintId]" type="button" class="btn btn-danger btn-flat" (click) = "complaintService.loadForm(complaint)">Delete</button>
                   </div>
                 </td>
               </tr>

@@ -6,8 +6,8 @@ export interface Subscriber {
     CreatedDate?: any;
     SubscriptionNo?: string;
     CustomerName?: string;
-    TypeId?: number;
-    NewTypeId?: number;
+    TypeId?: any;
+    NewTypeId?: any;
     Address1?: string;
     Address2?: string;
     Address3?: string;
