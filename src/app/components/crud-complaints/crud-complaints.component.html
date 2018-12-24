@@ -21,7 +21,7 @@
       <!-- /.box-header -->
       <!-- form start -->
 
-      <form [formGroup]="this.complaintService.complaintsForm" (ngSubmit)="onSubmit(this.complaintService.complaintsForm.value, this.compalintService.complaintsForm.valid)">
+      <form [formGroup]="this.complaintService.complaintsForm" (ngSubmit)="onSubmit(this.complaintService.complaintsForm.value, this.complaintService.complaintsForm.valid)">
         <input type="hidden" formControlName="InternalId">
         <div class="box-body">
           <div class="col-md-6">
@@ -31,15 +31,25 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{'has-error':submitted && formControls.SubscriptionNo.errors}">
               <label for="subscriptionNo">Subscription Number <span style="color:red">*</span></label>
-              <input type="text" class="form-control" formControlName="SubscriptionNo" id="subscriptionNo" placeholder="Subscription Number">
+              <input type="text" class="form-control" formControlName="SubscriptionNo" id="subscriptionNo" placeholder="Subscription Number" [ngClass]="{'is-invalid':submitted && formControls.SubscriptionNo.errors}">
+              <div class="invalid-feedback" *ngIf="submitted && formControls.SubscriptionNo.errors">
+                <span class="help-block" *ngIf="submitted && formControls.SubscriptionNo.errors.required">This field is
+                  required.</span>
+              </div>
             </div>
           </div>
           <div class="col-md-12">
-            <div class="form-group">
-              <label for="description">Description</label>
-              <textarea class="form-control" rows="6" id="description" formControlName="Description" placeholder="Description"></textarea>
+            <div class="form-group" [ngClass]="{'has-error':submitted && formControls.Description.errors}">
+              <label for="description">Description <span style="color:red">*</span></label>
+              <textarea class="form-control" rows="6" id="description" formControlName="Description" placeholder="Description" [ngClass]="{'is-invalid':submitted && formControls.Description.errors}"></textarea>
+              <div class="invalid-feedback" *ngIf="submitted && formControls.Description.errors">
+                <span class="help-block" *ngIf="submitted && formControls.Description.errors.required">This field is
+                  required.</span>
+                <span class="help-block" *ngIf="submitted && formControls.Description.errors.minlength">This field
+                  length should be minimum of 20 Characters</span>
+              </div>
             </div>
           </div>
           <div class="col-md-12">

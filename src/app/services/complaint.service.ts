@@ -16,8 +16,8 @@ export class ComplaintService {
 
     InternalId: new FormControl(null),
     ComplaintId: new FormControl(''),
-    SubscriptionNo: new FormControl(''),
-    Description: new FormControl(''),
+    SubscriptionNo: new FormControl('',Validators.required),
+    Description: new FormControl('',[Validators.required, Validators.minLength(20)]),
     Comments: new FormControl(''),
     Status: new FormControl(''),
     CreatedDate: new FormControl(''),

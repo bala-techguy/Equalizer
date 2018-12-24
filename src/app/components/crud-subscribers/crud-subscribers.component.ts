@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SubscriberService } from '../../services/subscriber.service'
+import { CommonService } from '../../services/common.service'
 import { SubscriptionTypeService } from '../../services/subscription-type.service'
 import { Subscriber } from '../../models/subscriber';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -19,6 +20,7 @@ export class CrudSubscribersComponent implements OnInit {
 
   constructor(
     private subscriberService: SubscriberService,
+    public commonService: CommonService,
     private route: ActivatedRoute,
     private router: Router,
     private subscriptionType: SubscriptionTypeService,
@@ -41,18 +43,17 @@ export class CrudSubscribersComponent implements OnInit {
 
     if (this.action == 'Add') {
       console.log(this.action);
+      console.log(this.commonService.randomNumber());
       this.subscriberService.subscribersForm.reset();
       this.subscriberService.subscribersForm.enable();
-      this.subscriberService.subscribersForm.controls['CreatedDate'].setValue(this.currentDate(), { onlySelf: true });
-      this.subscriberService.subscribersForm.controls['ModifiedDate'].setValue(this.currentDate(), { onlySelf: true });
+      this.subscriberService.subscribersForm.controls['SubscriptionNo'].disable();
+      this.subscriberService.subscribersForm.controls['CreatedDate'].disable();
+      this.subscriberService.subscribersForm.controls['ModifiedDate'].disable();
+      this.subscriberService.subscribersForm.controls['SubscriptionNo'].setValue(this.commonService.randomNumber(), { onlySelf: true });
+      this.subscriberService.subscribersForm.controls['CreatedDate'].setValue(this.commonService.currentDate(), { onlySelf: true });
+      this.subscriberService.subscribersForm.controls['ModifiedDate'].setValue(this.commonService.currentDate(), { onlySelf: true });
     }
     if (this.action == 'View' || this.action == 'Delete') {
-      //console.log(this.subscriberService.subscribersForm.controls.CreatedDate);
-      //this.subscriberService.subscribersForm.controls['TypeId'].setValue(this.subscriberService.subscribersForm.get('TypeId').value[0].Name, { onlySelf: true });
-      //this.subscriberService.subscribersForm.controls['CreatedDate'].setValue(this.formatDate(this.subscriberService.subscribersForm.get('CreatedDate').value), { onlySelf: true });
-      //this.subscriberService.subscribersForm.controls['ModifiedDate'].setValue(this.formatDate(this.subscriberService.subscribersForm.get('ModifiedDate').value), { onlySelf: true });
-      //this.subscriberService.subscribersForm.controls['DueDate'].setValue(this.formatDate(this.subscriberService.subscribersForm.get('DueDate').value), { onlySelf: true });
-      //this.subscriberService.subscribersForm.controls['RenewedDate'].setValue(this.formatDate(this.subscriberService.subscribersForm.get('RenewedDate').value), { onlySelf: true });
       this.subscriberService.subscribersForm.disable();
     }
     if (this.action == 'Modify') {
@@ -83,18 +84,7 @@ export class CrudSubscribersComponent implements OnInit {
 
   }
 
-  formatDate(date) {
-    const formattedDate = new Date(date);
-    console.log(formattedDate);
-    console.log(date);
-    return formattedDate.toISOString().substring(0, 10);
-    //return this.datepipe.transform(formattedDate, 'dd-mm-yyyy');
-  }
 
-  currentDate() {
-    const currentDate = new Date();
-    return currentDate.toISOString().substring(0, 10);
-  }
 
   delete(model) {
 
