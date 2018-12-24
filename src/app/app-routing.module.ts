@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { SubscribersComponent } from './components/subscribers/subscribers.component';
+import { LoyaltyComponent } from './components/loyalty/loyalty.component';
 import { ComplaintsComponent } from './components/complaints/complaints.component';
 import { AuditTrailComponent } from './components/audit-trail/audit-trail.component';
 import { UsersComponent } from './components/users/users.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'subscribers/view/:id', component: CrudSubscribersComponent,data : {action : 'View'}, canActivate: [AuthGuard]},
   {path: 'subscribers/modify/:id', component: CrudSubscribersComponent,data : {action : 'Modify'}, canActivate: [AuthGuard]},
   {path: 'subscribers/delete/:id', component: CrudSubscribersComponent,data : {action : 'Delete'}, canActivate: [AuthGuard]},
+  {path: 'loyalty', component: LoyaltyComponent, canActivate: [AuthGuard]},
   {path: 'complaints', component: ComplaintsComponent, canActivate: [AuthGuard]},
   {path: 'complaints/add', component: CrudComplaintsComponent,data : {action : 'Add'}, canActivate: [AuthGuard]},
   {path: 'complaints/view/:id', component: CrudComplaintsComponent,data : {action : 'View'}, canActivate: [AuthGuard]},

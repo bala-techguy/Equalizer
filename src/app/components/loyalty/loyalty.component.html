@@ -1,0 +1,51 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Loyalty
+    <small>A form that displays Loyalty details</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#" routerLink="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li class="active">Loyalty</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <!-- general form elements -->
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title"></h3>
+      </div>
+
+      <!-- /.box-header -->
+      <!-- form start -->
+      <form [formGroup]="this.loyaltyService.loyaltyForm">
+
+        <div class="box-body">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="loyaltyUser">Loyalty User</label>
+              <input type="text" class="form-control" formControlName="LoyaltyUser" id="loyaltyUser" placeholder="Loyalty User">
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="loyaltyPoints">Loyalty Points</label>
+              <input type="text" class="form-control" formControlName="LoyaltyPoints" id="loyaltyPoints" placeholder="Loyalty Points">
+            </div>
+          </div>
+        </div>
+        <!-- /.box-body -->
+
+      </form>
+      <!-- /.box -->
+
+    </div>
+    <!--/.col (right) -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->
