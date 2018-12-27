@@ -1,10 +1,10 @@
-export interface AuditTrial {    
+export interface AuditTrail {    
 
     InternalId?: any;
 
     Description?: string;
     SubscriptionNo?: string;
-    UserNameWhoUpdated?: number;
+    UserNameWhoUpdated?: any;
     Date?: any;
 
 }

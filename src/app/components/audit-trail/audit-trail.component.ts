@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuditTrailService } from '../../services/audit-trail.service';
 
 @Component({
   selector: 'app-audit-trail',
@@ -7,20 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuditTrailComponent implements OnInit {
 
-  dtOptions: any = {};
+  auditTrail: any[];
 
-  constructor() { }
+  constructor(public auditTrailService: AuditTrailService) { }
 
-  ngOnInit(): void {
-    this.dtOptions = {
-      // Declare the use of the extension in the dom parameter
-      dom: 'Bfrtip',
-      // Configure the buttons
-      buttons: [
-        'copy',
-        'print',
-        'excel'
-      ]
-    };
+  ngOnInit() {
+
+    this.auditTrail = this.auditTrailService.getAuditTrail();
+    this.auditTrailService.auditTrailForm.disable();
+    this.auditTrailService.auditTrailForm.setValue(this.auditTrail[0]);
+    this.auditTrailService.auditTrailForm.controls['UserNameWhoUpdated'].setValue(this.auditTrail[0].UserNameWhoUpdated[0].UserName, { onlySelf: true });
   }
 }
