@@ -20,6 +20,8 @@ import { SubscriberService } from './services/subscriber.service'
 import { DatePipe } from '@angular/common';
 import { CrudComplaintsComponent } from './components/crud-complaints/crud-complaints.component';
 import { LoyaltyComponent } from './components/loyalty/loyalty.component';
+import { LoyaltyUserComponent } from './components/loyalty-user/loyalty-user.component';
+import { CrudLoyaltyUserComponent } from './components/crud-loyalty-user/crud-loyalty-user.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { LoyaltyComponent } from './components/loyalty/loyalty.component';
     CrudSubscribersComponent,
     UsersComponent,
     CrudComplaintsComponent,
-    LoyaltyComponent
+    LoyaltyComponent,
+    LoyaltyUserComponent,
+    CrudLoyaltyUserComponent
   ],
   imports: [
     BrowserModule,

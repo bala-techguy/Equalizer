@@ -9,6 +9,8 @@ import { AuditTrailComponent } from './components/audit-trail/audit-trail.compon
 import { UsersComponent } from './components/users/users.component';
 import { CrudSubscribersComponent } from './components/crud-subscribers/crud-subscribers.component';
 import { CrudComplaintsComponent } from './components/crud-complaints/crud-complaints.component';
+import { LoyaltyUserComponent } from './components/loyalty-user/loyalty-user.component';
+import { CrudLoyaltyUserComponent } from './components/crud-loyalty-user/crud-loyalty-user.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -27,6 +29,11 @@ const routes: Routes = [
   {path: 'complaints/modify/:id', component: CrudComplaintsComponent,data : {action : 'Modify'}, canActivate: [AuthGuard]},
   {path: 'complaints/delete/:id', component: CrudComplaintsComponent,data : {action : 'Delete'}, canActivate: [AuthGuard]},
   {path: 'audit-trail', component: AuditTrailComponent, canActivate: [AuthGuard]},
+  {path: 'loyalty-users', component: LoyaltyUserComponent, canActivate: [AuthGuard]},
+  {path: 'loyalty-users/add', component: CrudLoyaltyUserComponent,data : {action : 'Add'}, canActivate: [AuthGuard]},
+  {path: 'loyalty-users/view/:id', component: CrudLoyaltyUserComponent,data : {action : 'View'}, canActivate: [AuthGuard]},
+  {path: 'loyalty-users/modify/:id', component: CrudLoyaltyUserComponent,data : {action : 'Modify'}, canActivate: [AuthGuard]},
+  {path: 'loyalty-users/delete/:id', component: CrudLoyaltyUserComponent,data : {action : 'Delete'}, canActivate: [AuthGuard]},
   {path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
   //{ path: '**', redirectTo: ''}
 ];
