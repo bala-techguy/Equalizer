@@ -41,9 +41,9 @@ export class LoyaltyUserService {
     this.loyaltyUsersForm.reset();
   }
 
-  loadForm(sub) {
-    console.log(sub);
-    this.loyaltyUsersForm.setValue(sub);
+  loadForm(data) {
+    console.log(data);
+    this.loyaltyUsersForm.setValue(data);
   }
 
   getLoyaltyUsers() {

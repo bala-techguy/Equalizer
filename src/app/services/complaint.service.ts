@@ -44,9 +44,9 @@ export class ComplaintService {
     this.complaintsForm.reset();
   }
 
-  loadForm(sub) {
-    console.log(sub);
-    this.complaintsForm.setValue(sub);
+  loadForm(data) {
+    console.log(data);
+    this.complaintsForm.setValue(data);
   }
 
   getComplaints() {

@@ -11,6 +11,7 @@ import { CrudSubscribersComponent } from './components/crud-subscribers/crud-sub
 import { CrudComplaintsComponent } from './components/crud-complaints/crud-complaints.component';
 import { LoyaltyUserComponent } from './components/loyalty-user/loyalty-user.component';
 import { CrudLoyaltyUserComponent } from './components/crud-loyalty-user/crud-loyalty-user.component';
+import { CrudUsersComponent } from './components/crud-users/crud-users.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -35,6 +36,10 @@ const routes: Routes = [
   {path: 'loyalty-users/modify/:id', component: CrudLoyaltyUserComponent,data : {action : 'Modify'}, canActivate: [AuthGuard]},
   {path: 'loyalty-users/delete/:id', component: CrudLoyaltyUserComponent,data : {action : 'Delete'}, canActivate: [AuthGuard]},
   {path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
+  {path: 'users/add', component: CrudUsersComponent,data : {action : 'Add'}, canActivate: [AuthGuard]},
+  {path: 'users/view/:id', component: CrudUsersComponent,data : {action : 'View'}, canActivate: [AuthGuard]},
+  {path: 'users/modify/:id', component: CrudUsersComponent,data : {action : 'Modify'}, canActivate: [AuthGuard]},
+  {path: 'users/delete/:id', component: CrudUsersComponent,data : {action : 'Delete'}, canActivate: [AuthGuard]},
   //{ path: '**', redirectTo: ''}
 ];
 

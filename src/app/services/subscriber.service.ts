@@ -61,9 +61,9 @@ export class SubscriberService {
     this.subscribersForm.reset();
   }
 
-  loadForm(sub) {
+  loadForm(data) {
     //console.log(sub);
-    this.subscribersForm.setValue(sub);
+    this.subscribersForm.setValue(data);
   }
 
   getSubscribers() {

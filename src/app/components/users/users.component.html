@@ -29,7 +29,7 @@
                 <th>Role</th>
                 <th>Is Enabled?</th>
                 <th>Date Created</th>
-                <th>Actions</th>
+                <th style="width:20%">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -41,9 +41,9 @@
 
                 <td>
                   <div class="btn-group">
-                    <button [routerLink]="['/users/view/'+user.UserName]" href="" type="button" class="btn btn-info btn-flat" (click) = "subscriberService.loadForm(sub)">View</button>
-                    <button [routerLink]="['/users/modify/'+user.UserName]" type="button" class="btn btn-warning btn-flat" (click) = "subscriberService.loadForm(sub)">Modify</button>
-                    <button [routerLink]="['/users/delete/'+user.UserName]" type="button" class="btn btn-danger btn-flat" (click) = "subscriberService.loadForm(sub)">Delete</button>
+                    <button [routerLink]="['/users/view/'+user.UserName]" href="" type="button" class="btn btn-info btn-flat" (click) = "userService.loadForm(user)">View</button>
+                    <button [routerLink]="['/users/modify/'+user.UserName]" type="button" class="btn btn-warning btn-flat" (click) = "userService.loadForm(user)">Modify</button>
+                    <button [routerLink]="['/users/delete/'+user.UserName]" type="button" class="btn btn-danger btn-flat" (click) = "userService.loadForm(user)">Delete</button>
                   </div>
                 </td>
               </tr>
@@ -54,7 +54,7 @@
                 <th>Role</th>
                 <th>Is Enabled?</th>
                 <th>Date Created</th>
-                <th>Actions</th>
+                <th style="width:20%">Actions</th>
               </tr>
             </tfoot>
           </table>

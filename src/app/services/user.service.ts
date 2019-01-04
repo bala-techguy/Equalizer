@@ -12,7 +12,7 @@ export class UserService {
 
   constructor() { }
 
-  subscribersForm = new FormGroup({
+  usersForm = new FormGroup({
     InternalId: new FormControl(null),
     UserName: new FormControl('', Validators.required),
     Password: new FormControl('', Validators.required),
@@ -23,6 +23,31 @@ export class UserService {
 
   })
 
+  insertUser(model) {
+
+    console.log(model);
+    // After writing the values into database
+    this.usersForm.reset();
+  }
+
+  editUser(model) {
+
+    console.log(model);
+    // After writing the values into database
+    this.usersForm.reset();
+  }
+
+  deleteUser(model) {
+    console.log(model);
+    this.usersForm.reset();
+  }
+
+  loadForm(data) {
+    console.log(data);
+    this.usersForm.setValue(data);
+  }
+
+
   getUsers() {
 
     let data = [
@@ -30,7 +55,7 @@ export class UserService {
         "InternalId": "5c1524e1969743c2b71d1c6e",
         "UserName": "Dionne",
         "Password": "9610A",
-        "RoleId": "SuperUser",
+        "RoleId": "Super User",
         "IsEnabled": false,
         "CreatedDate": "2018-05-23",
         "ModifiedDate": "2015-09-26"
@@ -66,7 +91,7 @@ export class UserService {
         "InternalId": "5c1524e1127fa3f431bba17d",
         "UserName": "Miller",
         "Password": "551A",
-        "RoleId": "SuperUser",
+        "RoleId": "Super User",
         "IsEnabled": false,
         "CreatedDate": "2014-06-09",
         "ModifiedDate": "2018-09-01"
@@ -75,7 +100,7 @@ export class UserService {
         "InternalId": "5c1524e1816abb0fc3e57992",
         "UserName": "Contreras",
         "Password": "1637A",
-        "RoleId": "SuperUser",
+        "RoleId": "Super User",
         "IsEnabled": true,
         "CreatedDate": "2018-02-24",
         "ModifiedDate": "2015-10-01"
@@ -111,7 +136,7 @@ export class UserService {
         "InternalId": "5c1524e1f1666dfb0bc47e41",
         "UserName": "Mariana",
         "Password": "1275A",
-        "RoleId": "SuperUser",
+        "RoleId": "Super User",
         "IsEnabled": false,
         "CreatedDate": "2016-10-27",
         "ModifiedDate": "2014-08-01"
@@ -156,7 +181,7 @@ export class UserService {
         "InternalId": "5c1524e1eff9dd27532f26da",
         "UserName": "Nielsen",
         "Password": "9713A",
-        "RoleId": "SuperUser",
+        "RoleId": "Super User",
         "IsEnabled": false,
         "CreatedDate": "2014-01-06",
         "ModifiedDate": "2016-02-13"
@@ -165,7 +190,7 @@ export class UserService {
         "InternalId": "5c1524e1ceb58ec93f9b8261",
         "UserName": "Alana",
         "Password": "9623A",
-        "RoleId": "SuperUser",
+        "RoleId": "Super User",
         "IsEnabled": false,
         "CreatedDate": "2018-01-02",
         "ModifiedDate": "2014-08-28"
@@ -228,7 +253,7 @@ export class UserService {
         "InternalId": "5c1524e19a04b0cff7ec14bd",
         "UserName": "Tara",
         "Password": "8898A",
-        "RoleId": "SuperUser",
+        "RoleId": "Super User",
         "IsEnabled": false,
         "CreatedDate": "2017-09-20",
         "ModifiedDate": "2017-05-12"

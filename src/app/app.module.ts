@@ -22,6 +22,7 @@ import { CrudComplaintsComponent } from './components/crud-complaints/crud-compl
 import { LoyaltyComponent } from './components/loyalty/loyalty.component';
 import { LoyaltyUserComponent } from './components/loyalty-user/loyalty-user.component';
 import { CrudLoyaltyUserComponent } from './components/crud-loyalty-user/crud-loyalty-user.component';
+import { CrudUsersComponent } from './components/crud-users/crud-users.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { CrudLoyaltyUserComponent } from './components/crud-loyalty-user/crud-lo
     CrudComplaintsComponent,
     LoyaltyComponent,
     LoyaltyUserComponent,
-    CrudLoyaltyUserComponent
+    CrudLoyaltyUserComponent,
+    CrudUsersComponent
   ],
   imports: [
     BrowserModule,
