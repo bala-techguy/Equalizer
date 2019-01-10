@@ -106,8 +106,8 @@
               <div class="col-md-6">
                 <div class="form-group" [ngClass]="{'has-error':submitted && formControls.TypeId.errors}">
                   <label for="typeId">Subscription Type <span style="color:red">*</span></label>
-                  <select class="form-control select2" formControlName="TypeId" id="typeId" [ngClass]="{'is-invalid':submitted && formControls.TypeId.errors}">
-                    <option *ngFor="let type of types" [ngValue]="type">{{type}}</option>
+                  <select class="form-control select2" formControlName="TypeId" id="typeId" [ngClass]="{'is-invalid':submitted && formControls.TypeId.errors}" (input)="onTypeChange($event.target.value)">
+                    <option *ngFor="let type of types" [value]="type.TypeId" [ngValue]="type.Name" >{{type.Name}}</option>
                   </select>
                   <!-- <input type="number" class="form-control" formControlName="TypeId" id="typeId" placeholder="Subscription Type"
                     [ngClass]="{'is-invalid':submitted && formControls.TypeId.errors}"> -->
@@ -255,8 +255,8 @@
                               <div class="col-md-12">
                                 <div class="form-group" [ngClass]="{'has-error':submitted && formControls.NewTypeId.errors}">
                                   <label for="newTypeId">Subscription Type <span style="color:red">*</span></label>
-                                  <select class="form-control select2" formControlName="NewTypeId" id="newTypeId" [ngClass]="{'is-invalid':submitted && formControls.NewTypeId.errors}">
-                                    <option *ngFor="let type of types" [ngValue]="type">{{type}}</option>
+                                  <select class="form-control select2" formControlName="NewTypeId" id="newTypeId" [ngClass]="{'is-invalid':submitted && formControls.NewTypeId.errors}" (input)="onTypeChange($event.target.value)">
+                                    <option *ngFor="let type of types" [value]="type.TypeId" [ngValue]="type.Name">{{type.Name}}</option>
                                   </select>
                                   <!-- <input type="number" class="form-control" formControlName="TypeId" id="typeId" placeholder="Subscription Type"
                                     [ngClass]="{'is-invalid':submitted && formControls.TypeId.errors}"> -->

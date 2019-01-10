@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,13 @@ export class CommonService {
   currentDate() {
     const currentDate = new Date();
     return currentDate.toISOString().substring(0, 10);
+  }
+
+  calculateDueDate(days) {
+
+    const currentDate = new Date();
+    return moment().add(days, 'days').toISOString().substring(0, 10);
+
   }
 
 

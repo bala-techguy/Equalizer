@@ -34,7 +34,7 @@ export class CrudSubscribersComponent implements OnInit {
     //console.log(this.subscriberService.subscribersForm.get('TypeId').value[0].Name);
     var values = [];
     this.subscriptionType.getSubscriptionType().forEach(function (value) {
-      values.push(value.Name);
+      values.push(value);
       //console.log(value.Name);
     });
     this.types = values;
@@ -49,7 +49,9 @@ export class CrudSubscribersComponent implements OnInit {
       this.subscriberService.subscribersForm.controls['SubscriptionNo'].disable();
       this.subscriberService.subscribersForm.controls['CreatedDate'].disable();
       this.subscriberService.subscribersForm.controls['ModifiedDate'].disable();
+      this.subscriberService.subscribersForm.controls['RenewedDate'].disable();
       this.subscriberService.subscribersForm.controls['SubscriptionNo'].setValue(this.commonService.randomNumber(), { onlySelf: true });
+      this.subscriberService.subscribersForm.controls['RenewedDate'].setValue(this.commonService.currentDate(), { onlySelf: true });
       this.subscriberService.subscribersForm.controls['CreatedDate'].setValue(this.commonService.currentDate(), { onlySelf: true });
       this.subscriberService.subscribersForm.controls['ModifiedDate'].setValue(this.commonService.currentDate(), { onlySelf: true });
     }
@@ -65,8 +67,24 @@ export class CrudSubscribersComponent implements OnInit {
       this.subscriberService.subscribersForm.controls['LoyaltyUserId'].disable();
       this.subscriberService.subscribersForm.controls['DueDate'].disable();
       this.subscriberService.subscribersForm.controls['RenewedDate'].disable();
+      this.subscriberService.subscribersForm.controls['NewRenewedDate'].setValue(this.commonService.currentDate(), { onlySelf: true });
+      this.subscriberService.subscribersForm.controls['NewRenewedDate'].disable();
     }
 
+
+  }
+
+  onTypeChange(value) {
+    var days;
+    this.subscriptionType.getSubscriptionType().forEach(function (row) {
+      if (value == row.TypeId){
+        days = row.Days;
+        //console.log(value + row.Name);
+      }
+      
+    });
+    this.subscriberService.subscribersForm.controls['DueDate'].setValue(this.commonService.calculateDueDate(days), { onlySelf: true });
+    this.subscriberService.subscribersForm.controls['NewDueDate'].setValue(this.commonService.calculateDueDate(days), { onlySelf: true });
 
   }
 
@@ -80,7 +98,6 @@ export class CrudSubscribersComponent implements OnInit {
     this.subscriberService.subscribersForm.controls['TypeId'].setValue(this.subscriberService.subscribersForm.get('NewTypeId').value, { onlySelf: true });
     this.subscriberService.subscribersForm.controls['LoyaltyUserId'].setValue(this.subscriberService.subscribersForm.get('NewLoyaltyUserId').value, { onlySelf: true });
     this.subscriberService.subscribersForm.controls['DueDate'].setValue(this.subscriberService.subscribersForm.get('NewDueDate').value, { onlySelf: true });
-    this.subscriberService.subscribersForm.controls['RenewedDate'].setValue(this.subscriberService.subscribersForm.get('NewRenewedDate').value, { onlySelf: true });
 
   }
 
