@@ -17,7 +17,7 @@
       <!-- small box -->
       <div class="small-box bg-aqua">
         <div class="inner">
-          <h3>25</h3>
+          <h3>{{dashboardTiles[0].SubscribersDue}}</h3>
 
           <p>Subscribers Due</p>
         </div>
@@ -33,7 +33,7 @@
       <!-- small box -->
       <div class="small-box bg-green">
         <div class="inner">
-          <h3>21</h3>
+          <h3>{{dashboardTiles[0].OutstandingCoomplaints}}</h3>
 
           <p>Outstanding Complaints</p>
         </div>
@@ -49,7 +49,7 @@
       <!-- small box -->
       <div class="small-box bg-yellow">
         <div class="inner">
-          <h3>44</h3>
+          <h3>{{dashboardTiles[0].LoyaltyUsers}}</h3>
 
           <p>Loyalty Users</p>
         </div>
@@ -65,7 +65,7 @@
       <!-- small box -->
       <div class="small-box bg-red">
         <div class="inner">
-          <h3>65</h3>
+          <h3>{{dashboardTiles[0].TotalSubscribers}}</h3>
 
           <p>Total Subscribers</p>
         </div>
@@ -87,37 +87,21 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <table class="table table-bordered">
-            <tr>
-              <th>Subscription No</th>
-              <th>Name</th>
-              <th>Loyalty User</th>
-            </tr>
-            <tr>
-              <td>1.</td>
-              <td>Manish</td>
-              <td>1234</td>
-            </tr>
-            <tr>
-              <td>2.</td>
-              <td>Agarwal</td>
-              <td>1234</td>
-            </tr>
-            <tr>
-              <td>3.</td>
-              <td>Abdul</td>
-              <td>1234</td>
-            </tr>
-            <tr>
-              <td>4.</td>
-              <td>Nukesh</td>
-              <td>1234</td>
-            </tr>
-            <tr>
-              <td>5.</td>
-              <td>Bobinson</td>
-              <td>1234</td>
-            </tr>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Subscription No</th>
+                <th>Name</th>
+                <th>Loyalty Users</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let sub of subscribers| slice:0:5">
+                <td>{{sub.SubscriptionNo }}</td>
+                <td>{{sub.CustomerName }}</td>
+                <td>{{sub.LoyaltyUserId }}</td>
+              </tr>
+            </tbody>
           </table>
         </div>
         <!-- /.box-body -->
