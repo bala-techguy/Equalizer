@@ -23,6 +23,8 @@ import { LoyaltyComponent } from './components/loyalty/loyalty.component';
 import { LoyaltyUserComponent } from './components/loyalty-user/loyalty-user.component';
 import { CrudLoyaltyUserComponent } from './components/crud-loyalty-user/crud-loyalty-user.component';
 import { CrudUsersComponent } from './components/crud-users/crud-users.component';
+import { SubscriptionTypeComponent } from './components/subscription-type/subscription-type.component';
+import { CrudSubscriptionTypeComponent } from './components/crud-subscription-type/crud-subscription-type.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { CrudUsersComponent } from './components/crud-users/crud-users.component
     LoyaltyComponent,
     LoyaltyUserComponent,
     CrudLoyaltyUserComponent,
-    CrudUsersComponent
+    CrudUsersComponent,
+    SubscriptionTypeComponent,
+    CrudSubscriptionTypeComponent
   ],
   imports: [
     BrowserModule,

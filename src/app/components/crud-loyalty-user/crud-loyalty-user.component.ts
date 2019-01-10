@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../../services/common.service'
 import { LoyaltyUserService } from '../../services/loyalty-user.service'
-import { Complaint } from '../../models/complaint';
+import { LoyaltyUser } from '../../models/loyaltyUser';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
@@ -59,7 +59,7 @@ export class CrudLoyaltyUserComponent implements OnInit {
 
   }
 
-  onSubmit(model: Complaint, isValid: boolean) {
+  onSubmit(model: LoyaltyUser, isValid: boolean) {
     console.log(model, isValid);
     this.submitted = true;
     if (isValid) {

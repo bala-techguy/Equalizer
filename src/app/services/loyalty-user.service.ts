@@ -8,8 +8,6 @@ import { FormControl, FormGroup, Validators } from "@angular/forms"
 })
 export class LoyaltyUserService {
 
-  complaints: Observable<LoyaltyUser[]>;
-
   constructor() { }
 
   loyaltyUsersForm = new FormGroup({
@@ -18,7 +16,7 @@ export class LoyaltyUserService {
     LoyaltyUserId: new FormControl('',Validators.required),
     Name : new FormControl('',Validators.required),
     CreatedDate: new FormControl(''),
-    ModifiedDate: new FormControl(''),
+    ModifiedDate: new FormControl('')
 
   })
 
